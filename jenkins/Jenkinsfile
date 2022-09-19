@@ -21,8 +21,12 @@ pipeline {
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
-                    input message: 'Lanjutkan ke tahap Deploy?'
                 }
+            }
+        }
+        stage('Manual Approval'){
+            steps{
+                input message: 'Lanjutkan ke tahap Deploy?'
             }
         }
         stage('Deploy') {
