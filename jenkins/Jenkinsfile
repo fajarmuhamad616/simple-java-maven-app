@@ -17,11 +17,11 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn test'
-                input message: 'Lanjutkan ke tahap Deploy?'
             }
             post {
                 always {
                     junit 'target/surefire-reports/*.xml'
+                    input message: 'Lanjutkan ke tahap Deploy?'
                 }
             }
         }
